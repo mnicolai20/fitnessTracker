@@ -2,10 +2,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+// localhost Port
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-// comment for heroku
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -16,6 +17,7 @@ app.use(express.static("public"));
 app.use(require("./routes/views.js"));
 app.use(require("./routes/apiB.js"));
 
+// mongoose connection to host
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false
